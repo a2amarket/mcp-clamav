@@ -61,7 +61,3 @@ def scan_file(base64_data: str, filename: str) -> dict:
         if temp_file_path and os.path.exists(temp_file_path):
             os.unlink(temp_file_path)
             logger.info(f"Cleaned up temporary file: {temp_file_path}")
-
-if __name__ == "__main__":
-    logger.info("Starting ClamAV MCP server...")
-    mcp.run(transport="sse") 

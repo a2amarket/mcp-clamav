@@ -28,10 +28,26 @@ brew install clamav
 
 To run the MCP server:
 ```bash
-uv run main.py
+uv run mcp run main.py -t sse
 ```
 
 The server will start and listen for SSE connections on port 8000 by default.
+
+## Cursor Configuration
+
+To use this MCP with Cursor, add the following configuration to your Cursor settings:
+
+```json
+{
+  "mcpServers": {
+    "ClamAV Server": {
+      "url": "http://[SERVER_IP]:8000/sse"
+    }
+  }
+}
+```
+
+This configuration tells Cursor to connect to the ClamAV MCP server.
 
 ## API
 
