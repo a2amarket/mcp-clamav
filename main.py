@@ -9,33 +9,6 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-def scan_file(file_path):
-    """
-    Scan a file using ClamAV's clamscan command.
-    
-    Args:
-        file_path (str): Path to the file to scan
-        
-    Returns:
-        str: Raw output from clamscan command
-    """
-    try:
-        # Check if file exists
-        if not os.path.exists(file_path):
-            return "Error: File not found"
-            
-        # Run clamscan command
-        result = subprocess.run(['clamscan', file_path], 
-                              capture_output=True, 
-                              text=True)
-        
-        return result.stdout + result.stderr
-            
-    except FileNotFoundError:
-        return "Error: clamscan command not found. Please install ClamAV."
-    except Exception as e:
-        return f"Error during scan: {str(e)}"
-
 # Create MCP server instance
 mcp = FastMCP("ClamAV Scanner")
 
